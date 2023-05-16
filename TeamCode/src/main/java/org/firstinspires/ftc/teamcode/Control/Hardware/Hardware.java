@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Control.Hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 public abstract class Hardware {
 

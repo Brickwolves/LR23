@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Control.Hardware;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
@@ -20,6 +21,8 @@ public class V6Hardware extends Hardware{
     public VoltageSensor batteryVoltage;
 
     public BNO055IMU imu;
+
+    public DcMotor liftLeft, liftRight;
 
     private HardwareMap hardwareMap;
 
@@ -85,8 +88,9 @@ public class V6Hardware extends Hardware{
         leftBack = hardwareMap.dcMotor.get("bl");
         rightBack = hardwareMap.dcMotor.get("br");
 
-        verticalEncoder = hardwareMap.dcMotor.get("fl");
+        verticalEncoder = leftFront;
         horizontalEncoder = hardwareMap.dcMotor.get("bl");
+        horizontalEncoder.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         driveWithoutEncoders();
 
