@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.Testing;
 
+import static org.firstinspires.ftc.teamcode.Utilities.OpModeUtils.setOpMode;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -19,14 +21,13 @@ public class SlidesTestingOpMode extends OpMode {
     ArmControl armController;
     @Override
     public void init() {
+        setOpMode(this);
         hardware = new V6Hardware(hardwareMap);
         slideController = new SlideControl(hardware);
         armController = new ArmControl(hardware);
         controller = new Controller(gamepad1);
         telemetry.addLine("Initialized");
         telemetry.update();
-        int a = 5;
-        int b = 2;
     }
 
     @Override
@@ -49,7 +50,12 @@ public class SlidesTestingOpMode extends OpMode {
             slideController.setHeight(SlideControl.PoleHeight.Tall);
             armController.setHeight(SlideControl.PoleHeight.Tall);
         }
+        else if (controller.dpad_right.isTapped()) {
+            slideController.setHeight(SlideControl.PoleHeight.Home);
+            armController.setHeight(SlideControl.PoleHeight.Home);
+        }
         update();
+
     }
 
     private void update(){

@@ -88,6 +88,7 @@ public class V6Hardware extends Hardware{
         leftBack = hardwareMap.dcMotor.get("bl");
         rightBack = hardwareMap.dcMotor.get("br");
 
+
         verticalEncoder = leftFront;
         horizontalEncoder = hardwareMap.dcMotor.get("bl");
         horizontalEncoder.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
