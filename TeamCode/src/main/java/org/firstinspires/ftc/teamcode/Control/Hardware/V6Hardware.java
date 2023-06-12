@@ -22,7 +22,7 @@ public class V6Hardware extends Hardware{
 
     public BNO055IMU imu;
 
-    public DcMotor liftLeft, liftRight;
+    public DcMotor liftLeft, liftRight, arm;
 
     private HardwareMap hardwareMap;
 
@@ -92,13 +92,21 @@ public class V6Hardware extends Hardware{
         horizontalEncoder = hardwareMap.dcMotor.get("bl");
         horizontalEncoder.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+        liftLeft = hardwareMap.dcMotor.get("spool2");
+        liftRight = hardwareMap.dcMotor.get("spool");
+
+        liftRight.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        arm = hardwareMap.dcMotor.get("v4b");
+
+        arm.setDirection(DcMotorSimple.Direction.REVERSE);
+
         driveWithoutEncoders();
 
         rightFront.setDirection(DcMotorSimple.Direction.FORWARD);
         rightBack.setDirection(DcMotorSimple.Direction.FORWARD);
         leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-
 
         imu =  hardwareMap.get(BNO055IMU.class, "imu");
 
